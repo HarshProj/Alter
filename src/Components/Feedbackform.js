@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Css/Feedbackform.css'
 import img from '../Assets/plus-large-svgrepo-com 1.png'
 import textareimg from '../Assets/textarea_icon.png'
@@ -8,14 +8,25 @@ import smiliimg from '../Assets/smiley_icon.png'
 import singleimg from '../Assets/input_icon.png'
 import radioimg from '../Assets/radio_icon.png'
 import categoryimg from '../Assets/cate_icon.png'
+
+import TextField from '@mui/material/TextField';
+import { Switch } from '@material-ui/core';
 export const Feedbackform = (props) => {
     useEffect(()=>{
         props.setCreate(true);
     },[])
+    const [addclick,setAddclick]=useState(0)
   return (
     <div className='workspace'>
         <div className="add-feilds">
-            <div className="fields-section">
+           {addclick==1?<div className='feildclicked'>
+            <div className="clicked-section">
+                <div className="go-back">
+
+                <p onClick={()=>{setAddclick(0)}}>&lt;</p><p>Back To Add Feild</p>
+                </div>
+            </div>
+           </div>:<div className="fields-section">
                 <h3>Add Fields</h3>
                 <div className="section">
                     <div className="field"><div className="textarea">
@@ -23,7 +34,7 @@ export const Feedbackform = (props) => {
                     <img src={textareimg} alt="" /><p>Textarea</p>
 
                         </div>
-                     <img src={img} alt="" /></div>
+                     <img src={img} alt="" onClick={()=>{setAddclick(1)}}/></div>
                     </div>
                     <div className="field"><div className="textarea">
                         <div className="" style={{display:'flex'}}>
@@ -71,38 +82,47 @@ export const Feedbackform = (props) => {
 
                    
                    <div className="based-on-url">
-                    <div className="">
-                    <span>
+                    <div className="toggle-part">
+                    <span className='url-span'>
                     Show Based On Url Condition
                     </span>
-                    <input type="radio" name="" id="" />
-
+                    <Switch size='small' checked/>
                     </div>
-                    <input type="text"  value='http:/'/>
+                    <input type="text" className='intpht'  value='http:/'/>
                    </div>
                    <div className="based-on-url">
-                    <div className="">
-                    <span>
+                    <div className="toggle-part">
+                    <span className='url-span'>
                     Show On Specific Date
                     </span>
-                    <input type="radio" name="" id="" />
+                    
+                    <Switch size='small' checked/>
 
                     </div>
-                    <input type="text" className='inp-datetime'  value='http:/'/>
+                    <TextField
+          id="outlined-error"
+          label="Select Time"
+          defaultValue="MM/DD/YY"
+        //   color='gray'
+        style={{border:"none"}}
+        />
                    </div>
                    <div className="based-on-url">
-                    <div className="">
-                    <span>
+                    <div className="toggle-part">
+                    <span className='url-span'>
                     Show On Specific Time
                     </span>
-                    <input type="radio" name="" id="" />
-
+                    <Switch size='small' checked />
                     </div>
-                    <input type="text" className='inp-datetime' value='http:/'/>
+                    <TextField
+          id="outlined-error"
+          label="Select Time"
+          defaultValue="hh:mm aa"
+        />
                    </div>
                    </div>
                 </div>
-            </div>
+            </div>}
         </div>
         <div className="form-body">
             <div className="form-name">
