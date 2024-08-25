@@ -15,6 +15,16 @@ export const Feedbackform = (props) => {
     useEffect(()=>{
         props.setCreate(true);
     },[])
+    const [formdata,setFormdata]=useState([{
+        type:"textarea",
+        label:"Would You like to add a comment"
+    },     
+    {
+        type:"Rating",
+        label:"Would You like to add a comment",
+        disp:<div></div>
+    }
+])
     const [addclick,setAddclick]=useState(0)
   return (
     <div className='workspace'>
@@ -128,8 +138,32 @@ export const Feedbackform = (props) => {
             <div className="form-name">
               <span>&lt;</span>  <h3>Genric Website Rating</h3>
             </div>
-            <div className="form-fields">
+            {/* <div className="form-fields">
                 <h2>Add Fields</h2>
+                    </div> */}
+             <div className="add-field-section">
+
+                <div className='textarea-field'>
+                    <label>Would like to add comment?</label>
+                    <div className="textareadiv">
+                        <textarea name="" id=""></textarea>
+                </div>
+                    </div>
+                <div className='rating-field'>
+                    <label>How likely is it that you will recommend us to your family and friends?</label>
+                    <div className="ratingdiv">
+                        <div className="ratings">1</div>
+                        <div className="ratings">2</div>
+                        <div className="ratings">3</div>
+                        <div className="ratings">4</div>
+                        <div className="ratings">5</div>
+                        <div className="ratings">6</div>
+                        <div className="ratings">7</div>
+                        <div className="ratings">8</div>
+                        <div className="ratings">9</div>
+                        <div className="ratings">10</div>
+                </div>
+                    </div>
             </div>
         </div>
     </div>
