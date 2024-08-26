@@ -8,7 +8,7 @@ import smiliimg from '../Assets/smiley_icon.png'
 import singleimg from '../Assets/input_icon.png'
 import radioimg from '../Assets/radio_icon.png'
 import categoryimg from '../Assets/cate_icon.png'
-
+import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 import { Switch } from '@material-ui/core';
 export const Feedbackform = (props) => {
@@ -146,7 +146,7 @@ export const Feedbackform = (props) => {
                 <div className='textarea-field'>
                     <label>Would like to add comment?</label>
                     <div className="textareadiv">
-                        <textarea name="" id=""></textarea>
+                        <textarea name="" id="" style={{resize:'none' }}></textarea>
                 </div>
                     </div>
                 <div className='rating-field'>
@@ -164,6 +164,69 @@ export const Feedbackform = (props) => {
                         <div className="ratings">10</div>
                 </div>
                     </div>
+                <div className='rating-star'>
+                    <label>Give a star rating for the website.</label>
+                    <div className="stardiv">
+                    <Rating 
+    name="rating"
+    size="large"
+    readOnly
+    defaultValue={0}
+    sx={{
+        fontSize: "1.5rem"
+    }}
+/>
+                </div>
+                    </div>
+                <div className='rating-star'>
+                    <label>What is your opinion of this page?</label>
+                    <div className="stardiv">
+                    <Rating 
+    name="rating"
+    size="large"
+    readOnly
+    defaultValue={0}
+    sx={{
+        fontSize: "1.5rem"
+    }}
+/>
+                </div>
+                    </div>
+                <div className='single-line rating-star'>
+                    <label>Do you have any suggestions to improve our website?</label>
+                    <div className="singlediv">
+                    <input type="text" name="" id="" />
+                </div>
+                    </div>
+                <div className='multiplechoice'>
+                    <label>Do you have any suggestions to improve our website?</label>
+                    <div className="multiplediv">
+                        <div className="mtpd">
+
+                    <input type="radio" name="" id="" />
+                    <label htmlFor="">Radio 1</label>
+                        </div>
+                        <div className="mtpd">
+
+                    <input type="radio" name="" id="" />
+                    <label htmlFor="">Radio 2</label>
+                        </div>
+                        <div className="mtpd">
+
+                    <input type="radio" name="" id="" />
+                    <label htmlFor="">Radio 3</label>
+                        </div>
+                </div>
+                    </div>
+                <div className='category-sec multiplechoice'>
+                    <label>Pick a subject and provide your feedback:</label>
+                    <div className="categorydiv">
+                    <div className="categories">Bug</div>
+                    <div className="categories">Content</div>
+                    <div className="categories">Other</div>
+                </div>
+                    </div>
+
             </div>
         </div>
     </div>
