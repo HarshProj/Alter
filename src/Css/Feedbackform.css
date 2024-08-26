@@ -3,7 +3,7 @@
     width:270px;
     position: relative;
     z-index: -1;
-    height: 1000px;
+    height: 1100px;
     background-color: #fff;
     /* height: 625px; */
     box-shadow: 0px 4px 4px 0px #00000040;
@@ -54,6 +54,7 @@ position: absolute;
 margin-left: auto;
 margin-right: auto;
 border-radius: 7px;
+padding-bottom: 60px;
 }
 .based-on-url{
     /* margin-top: 7px; */
@@ -185,6 +186,22 @@ label{
     border: 1px solid #DBD6D6;
     padding: 5px 5px;
     box-shadow: 0px 2px 4px 0px #00000040;   
+}
+.rating-smily{
+    height: 100px;
+    width: 90%;
+    margin-top: 15px;
+    border: 1px solid #DBD6D6;
+    padding: 5px 5px;
+    box-shadow: 0px 2px 4px 0px #00000040;   
+}
+.smilydiv{
+    display: flex ;
+    gap: 0.5rem;
+    margin-top: 5px;
+}
+.smily:hover{
+    cursor: pointer;
 }
 .stardiv{
     margin-top: 5px;

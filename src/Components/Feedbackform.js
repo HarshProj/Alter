@@ -11,6 +11,11 @@ import categoryimg from '../Assets/cate_icon.png'
 import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 import { Switch } from '@material-ui/core';
+import img1 from'../Assets/image 1.png'
+import img2 from'../Assets/image 2.png'
+import img3 from'../Assets/image 3.png'
+import img4 from'../Assets/image 4.png'
+import img5 from'../Assets/image 5.png'
 export const Feedbackform = (props) => {
     useEffect(()=>{
         props.setCreate(true);
@@ -178,18 +183,15 @@ export const Feedbackform = (props) => {
 />
                 </div>
                     </div>
-                <div className='rating-star'>
+                <div className='rating-smily'>
                     <label>What is your opinion of this page?</label>
-                    <div className="stardiv">
-                    <Rating 
-    name="rating"
-    size="large"
-    readOnly
-    defaultValue={0}
-    sx={{
-        fontSize: "1.5rem"
-    }}
-/>
+                    <div className="smilydiv">
+                    <div className="smily"><img src={img1} alt="" /></div>
+                    <div className="smily"><img src={img2} alt="" /></div>
+                    <div className="smily"><img src={img3} alt="" /></div>
+                    <div className="smily"><img src={img4} alt="" /></div>
+                    <div className="smily"><img src={img5} alt="" /></div>
+                    
                 </div>
                     </div>
                 <div className='single-line rating-star'>
