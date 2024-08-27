@@ -33,11 +33,14 @@ export const Feedbackform = (props) => {
         option3:'',
         index:'',
     })
+    const [toggle,setToggle]=useState(true);
+    const [visible,setVisible]=useState(0);
     const[info,setInfo]=useState({
         date:'',
         time:'',
         url:'http://'
     })
+    const [inputtxt,setInputtxt]=useState("");
     const navigate=useNavigate();
     useEffect(() => {
         props.setCreate(true);
@@ -230,8 +233,19 @@ const [formdata, setFormdata] = useState([{
     }
     console.log(details);
     return (
-        <div className='workspace'>
-            <div className="add-feilds">
+       <> {visible?<div className='formname-feild'>
+            <form className="form-title">
+                <h3>Create Feedback Form</h3>
+                <input type="text" name="" id="" required onChange={(e)=>{ setInputtxt(e.target.value);console.log(inputtxt)}}/>
+                <div className="title-btn">
+                <button type='submit' onClick={inputtxt==""?console.log(""):(e)=>{ e.preventDefault();localStorage.setItem('formname',inputtxt) ;setFormtitle(inputtxt);setVisible(!visible)}} >Edit</button>
+                <button className='cancle' onClick={()=>{setVisible(1)}}>CANCLE</button>
+    
+                </div>
+            </form>
+            </div>:""}<div className='workspace'>
+            <div className="toggle" onClick={()=>{setToggle(!toggle)}}>X</div>
+            {!toggle?'':<div className="add-feilds">
                 {addclick == 1 ? <div className='feildclicked'>
                     <div className="clicked-section">
                         <div className="go-back">
@@ -372,10 +386,13 @@ const [formdata, setFormdata] = useState([{
                         </div>
                     </div>
                 </div>}
-            </div>
+            </div>}
             <div className="form-body">
                 <div className="form-name">
                     <span style={{cursor:'pointer'}} onClick={()=>{navigate('/')}}>&lt;</span>  <h3>{formtitle}</h3>
+                    <div className="update-formname">
+                    <PencilSimple size={20} weight="fill"  onClick={()=>{setVisible(!visible)}}/>
+                    </div>
                 </div>
                 {display.length == 0 ? <div className="form-fields">
                     <h2>Add Fields</h2>
@@ -386,6 +403,6 @@ const [formdata, setFormdata] = useState([{
                         })}
                     </div>}
             </div>
-        </div>
+        </div></>
     )
 }
