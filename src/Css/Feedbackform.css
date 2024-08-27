@@ -165,6 +165,15 @@ top: 20px;
     
     
 }
+.tinp{
+    width: 80%;
+}
+.sel-opt{
+display: flex;
+margin-top: 5px;
+flex-direction: column;
+gap: 0.5rem;
+}
 button:hover{
     cursor: pointer;
 }

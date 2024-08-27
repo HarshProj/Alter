@@ -8,15 +8,19 @@ export const Dashboard = (props) => {
     const [inputtxt,setInputtxt]=useState("");
     useEffect(()=>{
         props.setCreate(false);
+        if(localStorage.getItem('formname')){
+            localStorage.removeItem('formname');
+        }
+        
     },[])
   return (
     <>
     {isVisible?"":<div className='formname-feild'>
         <form className="form-title">
             <h3>Create Feedback Form</h3>
-            <input type="text" name="" id="" required onChange={(e)=>{setInputtxt(e.target.value)}}/>
+            <input type="text" name="" id="" required onChange={(e)=>{props.setFormname(e.target.value); setInputtxt(e.target.value);console.log(props.formname)}}/>
             <div className="title-btn">
-            <button type='submit' onClick={inputtxt==""?console.log(""):()=>{navigate('/createform');props.setCreate(true)}} >CREATE</button>
+            <button type='submit' onClick={inputtxt==""?console.log(""):(e)=>{ e.preventDefault();localStorage.setItem('formname',inputtxt);props.setCreate(true);navigate('/createform')}} >CREATE</button>
             <button className='cancle' onClick={()=>{setVisible(1)}}>CANCLE</button>
 
             </div>
@@ -31,13 +35,7 @@ export const Dashboard = (props) => {
             <h3>New Form</h3>
             </div>
         </div>
-        <div className="add-one">
-            <div className="add-content">
-
-            <img src={img} alt="relode" />
-            <h3>New Form</h3>
-            </div>
-        </div>
+        
         </div>
     </div>
     </>

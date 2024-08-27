@@ -11,15 +11,16 @@ import { Feedbackform } from './Components/Feedbackform';
 import { useState } from 'react';
 function App() {
   const [create,setCreate]=useState(false)
+  const [formname,setFormname]=useState('')
   return (
    <>
    <Router>
-   <Navbar create={create}/>
+   <Navbar create={create} />
     <Routes>
-      <Route path='/' element={<Dashboard setCreate={setCreate}/>}/>
+      <Route path='/' element={<Dashboard setCreate={setCreate} setFormname={setFormname} formname={formname}/>}/>
     </Routes>
     <Routes>
-      <Route path='/createform' element={<Feedbackform setCreate={setCreate}/>}/>
+      <Route path='/createform' element={<Feedbackform setCreate={setCreate} setFormname={setFormname} formname={formname}/>}/>
     </Routes>
    
    </Router>
