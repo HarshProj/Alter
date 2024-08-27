@@ -122,6 +122,54 @@ padding-bottom: 60px;
 }
 .clicked-section{
     display: flex;
+    flex-direction: column;
+}
+.fds{
+    width: 100%;
+}
+.error-section p{
+    font-size: x-small;
+}
+.error-section input{
+    width:100% ;
+    padding: 7px 0;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+.save-field{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    /* justify-content: end; */
+position: relative;
+/* top: 20px; */
+}
+.reflect{
+    display: flex;
+    gap: 1rem;
+    /* flex-direction: column; */
+    /* justify-content: end; */
+position: relative;
+top: 20px;
+}
+.cancle{
+    width: 70px;
+    border: none;
+    color: #000000 !important;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px -1px #00000033;
+
+    box-shadow: 0px 4px 5px 0px #00000024;
+    
+    box-shadow: 0px 1px 10px 0px #0000001F;
+    
+    
+}
+button:hover{
+    cursor: pointer;
+}
+.error-section input:focus{
+    outline: none;
 }
 .go-back{
     display: flex;
@@ -168,6 +216,7 @@ label{
 }
 .ratingdiv{
     display: flex;
+    margin-bottom: 6px;
 }
 .ratings{
     width: 35px;
@@ -256,4 +305,23 @@ margin-top: 7px;
     text-align: center;
     height: 30px;
     border: 1px solid #00000052
+}
+.categories :hover{
+    cursor: pointer;
+}
+.modify-delete{
+    display: flex;
+    height: 28px;
+    justify-content: end;
+    gap: 1rem;
+    /* width: 100%; */
+    align-items: center;
+    margin-right: 8px;
+}
+.modify-delete svg{
+    cursor: pointer;
+    color: #000000;
+}
+.modify-delete path{
+    color: gray;
 }
