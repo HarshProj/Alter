@@ -19,20 +19,14 @@ import img4 from '../Assets/image 4.png'
 import { PencilSimple } from "@phosphor-icons/react";
 import { Trash } from "@phosphor-icons/react";
 import img5 from '../Assets/image 5.png'
-import { useNavigate } from 'react-router-dom'
+import { json, useNavigate } from 'react-router-dom'
+import {useAuthStore} from '../Store/Store'
 export const Feedbackform = (props) => {
+    const {auth,savedata}=useAuthStore((state)=>state);
     const [ind, setInd] = useState();
     const [display, setDisplay] = useState([]);
     const [formtitle,setFormtitle]=useState('')
     const [values, setValues] = useState([]);
-    const [details, setDetails] = useState({
-        label: '',
-        error: '',
-        option1:'',
-        option2:'',
-        option3:'',
-        index:'',
-    })
     const [toggle,setToggle]=useState(true);
     const [visible,setVisible]=useState(0);
     const[info,setInfo]=useState({
@@ -42,6 +36,52 @@ export const Feedbackform = (props) => {
     })
     const [inputtxt,setInputtxt]=useState("");
     const navigate=useNavigate();
+    const [details, setDetails] = useState({
+        label: '',
+        error: '',
+        option1:'',
+        option2:'',
+        option3:'',
+        index:'',
+    })
+    // useEffect(()=>{
+        
+        console.log(auth);
+    // },[])
+    const save=async(e)=>{
+        // e.preventDefault();
+        try {
+            const form=await fetch('http://localhost:5000/api/createform',{
+                method:'post',
+                headers:{
+                    'content-type':'application/json'
+                  },
+                  body:JSON.stringify({
+                    values:values,
+                    date:info.date,
+                    time:info.time,
+                    url:info.url,
+                    formname:formtitle
+                  })
+            })
+            const {data}=await form.json();
+            console.log(data);
+            if(data){
+                alert('updated successfully')
+            }
+            else{
+                console.log("error");
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    if(auth.click){
+        save();
+        savedata(false);
+        console.log("saved",formtitle);
+        navigate('/');
+    }
     useEffect(() => {
         props.setCreate(true);
        setFormtitle(localStorage.getItem('formname'));
