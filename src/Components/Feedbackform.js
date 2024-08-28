@@ -279,7 +279,7 @@ const [formdata, setFormdata] = useState([{
                 <input type="text" name="" id="" required onChange={(e)=>{ setInputtxt(e.target.value);console.log(inputtxt)}}/>
                 <div className="title-btn">
                 <button type='submit' onClick={inputtxt==""?console.log(""):(e)=>{ e.preventDefault();localStorage.setItem('formname',inputtxt) ;setFormtitle(inputtxt);setVisible(!visible)}} >Edit</button>
-                <button className='cancle' onClick={()=>{setVisible(1)}}>CANCLE</button>
+                <button className='cancle' onClick={(e)=>{ e.preventDefault(); setVisible(!visible)}}>CANCLE</button>
     
                 </div>
             </form>
