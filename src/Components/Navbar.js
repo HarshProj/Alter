@@ -14,7 +14,7 @@ export const Navbar = (props) => {
             </div>
         {props.create?<div>
             <form className='save-form'>
-                <button className='save' onClick={(e)=>{e.preventDefault(); savedata(true)}}>Save</button>
+                <button className='save' onClick={(e)=>{ savedata(true)}}>Save</button>
                 <button className='publish'>Publish</button>
             </form>
             </div>:""}

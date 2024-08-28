@@ -22,7 +22,19 @@ export const Dashboard = (props) => {
             })
             const data=await info.json();
             setFormsinfo(data.data);
-            console.log(data);
+            // console.log(data);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    const deleteform=async(id)=>{
+        // console.log(id);
+        try {
+            const info=await fetch(`https://alter-aipm.onrender.com/api/deleteform/${id}`,{
+                method:'delete',
+            })
+            const data=await info.json();
+            disp();
         } catch (error) {
             console.log(error.message);
         }
@@ -68,7 +80,7 @@ export const Dashboard = (props) => {
                         </div>
                         <div className="opsub">
                             <button style={{backgroundColor:'#2E7D32', color:'white'}}>Edit</button>
-                            <button style={{backgroundColor:'#2196F3', color:'white'}}>Delete</button>
+                            <button style={{backgroundColor:'#2196F3', color:'white'}} onClick={()=>{deleteform(value._id)}}>Delete</button>
                         </div>
                     </div>
                 </div>

@@ -36,17 +36,27 @@ app.post("/api/createform",async(req,res)=>{
                 id:form.id
             }
         }
-        console.log(data,form);
+        // console.log(data,form);
         res.status(200).send({data,msg:"success"});
     } catch (error) {
         res.status(500).send({err:error.message});
     }
    
 })
+app.delete('/api/deleteform/:id',async(req,res)=>{
+    try {
+        const id=req.params.id;
+        const form=await Form.findByIdAndDelete(id);
+        res.status(200).send({msg:"deleted"});
+        // console.log(form);
+    } catch (error) {
+        res.status(500).send({err:error.message});
+    }
+})
 app.get('/api/getforms',async(req,res)=>{
     try {
         const data= await Form.find({});
-        console.log(data);
+        // console.log(data);
         res.status(200).send({data})
     } catch (error) {
         res.status(500).send({err:error.message});   

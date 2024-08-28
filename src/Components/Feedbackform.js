@@ -46,7 +46,7 @@ export const Feedbackform = (props) => {
     })
     // useEffect(()=>{
         
-        console.log(auth);
+        // console.log(auth);
     // },[])
     const save=async(e)=>{
         // e.preventDefault();
@@ -68,6 +68,7 @@ export const Feedbackform = (props) => {
             console.log(data);
             if(data){
                 alert('updated successfully')
+                console.log("success");
             }
             else{
                 console.log("error");
@@ -79,7 +80,7 @@ export const Feedbackform = (props) => {
     if(auth.click){
         save();
         savedata(false);
-        console.log("saved",formtitle);
+        // console.log("saved",formtitle);
         navigate('/');
     }
     useEffect(() => {
@@ -262,16 +263,16 @@ const [formdata, setFormdata] = useState([{
         e.preventDefault();
         const newvalue={label:details.label,error:details.error,index:details.index,option1:details.option1,option2:details.option2,option3:details.option3}
             setValues([...values, newvalue]);
-        console.log(values);
+        // console.log(values);
     }
     const handleinfo=(e)=>{
         setInfo((previnfo)=>({
             ...previnfo,
             [e.target.name]:e.target.value
         }))
-        console.log(info);
+        // console.log(info);
     }
-    console.log(details);
+    // console.log(details);
     return (
        <> {visible?<div className='formname-feild'>
             <form className="form-title">
