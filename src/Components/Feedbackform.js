@@ -1,18 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../Css/Feedbackform.css'
-import img from '../Assets/plus-large-svgrepo-com 1.png'
-import textareimg from '../Assets/textarea_icon.png'
-import numericimg from '../Assets/numerical_icon.png'
-import starimg from '../Assets/Vector.png'
-import smiliimg from '../Assets/smiley_icon.png'
-import singleimg from '../Assets/input_icon.png'
-import radioimg from '../Assets/radio_icon.png'
-import categoryimg from '../Assets/cate_icon.png'
 import Rating from '@mui/material/Rating';
-import TextField from '@mui/material/TextField';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import img1 from '../Assets/image 1.png'
+import img1 from '../Assets/image 1.png' 
 import img2 from '../Assets/image 2.png'
 import img3 from '../Assets/image 3.png'
 import img4 from '../Assets/image 4.png'
@@ -21,6 +10,8 @@ import { Trash } from "@phosphor-icons/react";
 import img5 from '../Assets/image 5.png'
 import { json, useNavigate } from 'react-router-dom'
 import {useAuthStore} from '../Store/Store'
+import { Addsection } from './Addsection'
+import { Createfield } from './Createfield';
 export const Feedbackform = (props) => {
     const {auth,savedata}=useAuthStore((state)=>state);
     const [ind, setInd] = useState();
@@ -38,16 +29,12 @@ export const Feedbackform = (props) => {
     const navigate=useNavigate();
     const [details, setDetails] = useState({
         label: '',
-        error: '',
+        error: '', 
         option1:'',
         option2:'',
         option3:'',
         index:'',
     })
-    // useEffect(()=>{
-        
-        // console.log(auth);
-    // },[])
     const save=async(e)=>{
         // e.preventDefault();
         try {
@@ -279,7 +266,7 @@ const [formdata, setFormdata] = useState([{
                 <h3>Create Feedback Form</h3>
                 <input type="text" name="" id="" required onChange={(e)=>{ setInputtxt(e.target.value);console.log(inputtxt)}}/>
                 <div className="title-btn">
-                <button type='submit' onClick={inputtxt==""?console.log(""):(e)=>{ e.preventDefault();localStorage.setItem('formname',inputtxt) ;setFormtitle(inputtxt);setVisible(!visible)}} >Edit</button>
+                <button type='submit' onClick={inputtxt===""?console.log(""):(e)=>{ e.preventDefault();localStorage.setItem('formname',inputtxt) ;setFormtitle(inputtxt);setVisible(!visible)}} >Edit</button>
                 <button className='cancle' onClick={(e)=>{ e.preventDefault(); setVisible(!visible)}}>CANCLE</button>
     
                 </div>
@@ -287,146 +274,7 @@ const [formdata, setFormdata] = useState([{
             </div>:""}<div className='workspace'>
             <div className="toggle" onClick={()=>{setToggle(!toggle)}}>X</div>
             {!toggle?'':<div className="add-feilds">
-                {addclick == 1 ? <div className='feildclicked'>
-                    <div className="clicked-section">
-                        <div className="go-back">
-
-                            <p onClick={() => { setAddclick(0) }}>&lt;</p><p>Back To Add Feild</p>
-                        </div>
-                        <div className="add-section">
-                            <form className='save-field'>
-                                <div className="fds">
-                                    <TextField label="Label" variant="standard" size="medium" onChange={(e) => {
-                                        setDetails((prevDetails) => ({
-                                            ...prevDetails,
-                                            index:ind,
-                                            label: e.target.value
-                                        }));
-                                    }} fullWidth required />
-                                    <FormControlLabel control={<Switch />} defaultValue={true} label="Required" />
-                                    
-                                {ind==5||ind==6?<div className='option-section'>
-                                    <div className="">Option</div>
-                                    <div className="sel-opt">
-                                    <TextField label={ind==5?'Radio 1':'Bug'} variant="standard" className='tinp' name="option1"onChange={handlechange} size="medium"/>
-                                    <TextField label={ind==5?'Radio 2':'Content'} variant="standard" className='tinp' name='option2' onChange={handlechange} size="medium"/>
-                                    <TextField label={ind==5?'Radio 3':'Other'} variant="standard" className='tinp' name='option3' onChange={handlechange} size="medium"/>
-                                    </div>
-                                </div>:<div className="error-section">
-                                        <p>Error message</p>
-                                        <input type="text" name="error" id="" onChange={(e) => { handlechange(e) }} />
-                                        <p>Hyper Text</p>
-                                    </div>}
-                                </div>
-                                <div className="reflect">
-
-                                    <button className='save' onClick={addsection}>Save</button>
-                                    <button className='cancle'>Publish</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> : <div className="fields-section">
-                    <h3>Add Fields</h3>
-                    <div className="section">
-                        <div className="field"><div className="textarea">
-                            <div className="" style={{ display: 'flex' }}>
-                                <img src={textareimg} alt="" /><p>Textarea</p>
-
-                            </div>
-                            <img src={img} alt="" onClick={() => { setAddclick(1); setInd(0) }} /></div>
-                        </div>
-                        <div className="field"><div className="textarea">
-                            <div className="" style={{ display: 'flex' }}>
-                                <img src={numericimg} alt="" /><p>Numeric Rating</p>
-
-                            </div>
-                            <img src={img} alt="" onClick={() => { setAddclick(1); setInd(1) }} /></div>
-                        </div>
-                        <div className="field"><div className="textarea">
-                            <div className="" style={{ display: 'flex' }}>
-                                <img src={starimg} alt="" /><p>Star Rating</p>
-
-                            </div>
-                            <img src={img} alt="" onClick={() => { setAddclick(1); setInd(2) }} /></div>
-                        </div>
-                        <div className="field"><div className="textarea">
-                            <div className="" style={{ display: 'flex' }}>
-                                <img src={smiliimg} alt="" /><p>Smile Rating</p>
-
-                            </div>
-                            <img src={img} alt="" onClick={() => { setAddclick(1); setInd(3) }} /></div>
-                        </div>
-                        <div className="field"><div className="textarea">
-                            <div className="" style={{ display: 'flex' }}>
-                                <img src={singleimg} alt="" /><p> Single line Input</p>
-
-                            </div>
-                            <img src={img} alt="" onClick={() => { setAddclick(1); setInd(4) }} /></div>
-                        </div>
-                        <div className="field"><div className="textarea">
-                            <div className="" style={{ display: 'flex' }}>
-                                <img src={radioimg} alt="" /><p>Radio Button</p>
-
-                            </div>
-                            <img src={img} alt="" onClick={() => { setAddclick(1); setInd(5) }} /></div>
-                        </div>
-                        <div className="field"><div className="textarea">
-                            <div className="" style={{ display: 'flex' }}>
-                                <img src={categoryimg} alt="" /><p>Categories</p>
-
-                            </div>
-                            <img src={img} alt="" onClick={() => { setAddclick(1); setInd(6) }} /></div>
-                        </div>
-                        <div className="extra-fields">
-
-
-                            <div className="based-on-url">
-                                <div className="toggle-part">
-                                    <span className='url-span'>
-                                        Show Based On Url Condition
-                                    </span>
-                                    <Switch size='small' checked />
-                                </div>
-                                <input type="text" name='url' className='intpht' value={info.url} onChange={handleinfo}/>
-                            </div>
-                            <div className="based-on-url">
-                                <div className="toggle-part">
-                                    <span className='url-span'>
-                                        Show On Specific Date
-                                    </span>
-
-                                    <Switch size='small' checked />
-
-                                </div>
-                                <TextField
-                                    id="outlined-error"
-                                    label="Select Time"
-                                    defaultValue="MM/DD/YY"
-                                    //   color='gray'
-                                    name='date'
-                                    style={{ border: "none" }}
-                                    onChange={handleinfo}
-                                />
-                            </div>
-                            <div className="based-on-url">
-                                <div className="toggle-part">
-                                    <span className='url-span'>
-                                        Show On Specific Time
-                                    </span>
-                                    <Switch size='small' checked />
-                                </div>
-                                <TextField
-                                    id="outlined-error"
-                                    label="Select Time"
-                                    defaultValue="hh:mm aa"
-                                    name='time'
-                                    onChange={handleinfo}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>}
+                {addclick === 1 ? <Createfield setAddclick={setAddclick} setDetails={setDetails} ind={ind} addsection={addsection} handlechange={handlechange}/>:<Addsection setInd={setInd} handleinfo={handleinfo} setAddclick={setAddclick} info={info}/>}
             </div>}
             <div className="form-body">
                 <div className="form-name">
@@ -435,7 +283,7 @@ const [formdata, setFormdata] = useState([{
                     <PencilSimple size={20} weight="fill"  onClick={()=>{setVisible(!visible)}}/>
                     </div>
                 </div>
-                {values.length == 0 ? <div className="form-fields">
+                {values.length === 0 ? <div className="form-fields">
                     <h2>Add Fields</h2>
                 </div>
                     : <div className="add-field-section">
