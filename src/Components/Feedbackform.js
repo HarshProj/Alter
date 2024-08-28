@@ -51,7 +51,7 @@ export const Feedbackform = (props) => {
     const save=async(e)=>{
         // e.preventDefault();
         try {
-            const form=await fetch('/api/createform',{
+            const form=await fetch('https://alter-aipm.onrender.com/api/createform',{
                 method:'post',
                 headers:{
                     'content-type':'application/json'
