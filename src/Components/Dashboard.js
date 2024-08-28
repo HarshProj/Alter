@@ -7,6 +7,7 @@ export const Dashboard = (props) => {
     const [isVisible,setVisible]=useState(1);
     const navigate=useNavigate();
     const [inputtxt,setInputtxt]=useState("");
+    const [loader,setLoader]=useState(false);
     const [formsinfo,setFormsinfo]=useState([]);
     useEffect(()=>{
         props.setCreate(false);
@@ -16,6 +17,7 @@ export const Dashboard = (props) => {
         disp();
     },[])
     const disp=async()=>{
+        setLoader(true);
         try {
             const info=await fetch('https://alter-aipm.onrender.com/api/getforms',{
                 method:'get',
@@ -23,18 +25,21 @@ export const Dashboard = (props) => {
             const data=await info.json();
             setFormsinfo(data.data);
             // console.log(data);
+            setLoader(false);
         } catch (error) {
             console.log(error.message);
         }
     }
     const deleteform=async(id)=>{
         // console.log(id);
+        setLoader(true);
         try {
             const info=await fetch(`https://alter-aipm.onrender.com/api/deleteform/${id}`,{
                 method:'delete',
             })
             const data=await info.json();
             disp();
+            // setLoader(false);
         } catch (error) {
             console.log(error.message);
         }
@@ -61,7 +66,7 @@ export const Dashboard = (props) => {
             <h3>New Form</h3>
             </div>
         </div>
-        {formsinfo?.map((value,key)=>(
+        {!loader?formsinfo?.map((value,key)=>(
             <div className="add-one form-info" >
                 <div className="form">
                     <img src={formimg} alt="" />
@@ -86,7 +91,7 @@ export const Dashboard = (props) => {
                 </div>
             </div>
             
-        ))}
+        )):<div className="loader" style={{display:'flex',width:'100%', alignItems:'center',justifyContent:'center'}}>Loading...</div>}
         
         </div>
     </div>
