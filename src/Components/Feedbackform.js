@@ -51,7 +51,7 @@ export const Feedbackform = (props) => {
     const save=async(e)=>{
         // e.preventDefault();
         try {
-            const form=await fetch('http://localhost:5000/api/createform',{
+            const form=await fetch('/api/createform',{
                 method:'post',
                 headers:{
                     'content-type':'application/json'
@@ -434,7 +434,7 @@ const [formdata, setFormdata] = useState([{
                     <PencilSimple size={20} weight="fill"  onClick={()=>{setVisible(!visible)}}/>
                     </div>
                 </div>
-                {display.length == 0 ? <div className="form-fields">
+                {values.length == 0 ? <div className="form-fields">
                     <h2>Add Fields</h2>
                 </div>
                     : <div className="add-field-section">

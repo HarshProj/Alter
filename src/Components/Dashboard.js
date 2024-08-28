@@ -17,7 +17,7 @@ export const Dashboard = (props) => {
     },[])
     const disp=async()=>{
         try {
-            const info=await fetch('http://localhost:5000/api/getforms',{
+            const info=await fetch('/api/getforms',{
                 method:'get',
             })
             const data=await info.json();

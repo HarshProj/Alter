@@ -9,4 +9,4 @@ export const useAuthStore = create((set) => ({
     set((state) => ({
       auth: { ...state.auth, click: name },
     })),
-}));
+}))

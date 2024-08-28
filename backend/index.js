@@ -7,9 +7,20 @@ const port=process.env.PORT
 const Form=require('./Schema/Form');
 // console.log(process.env)
 const db=require('./db')
+// const path=require('path')
 const cors=require('cors');
 app.use(cors()); 
 db();
+// app.use(express.static(path.join(__dirname , "./client/build")))
+// app.get("*"  ,(req,res)=> {
+//     res.sendFile( 
+//         path.join(__dirname , "./client/build/index.html"),
+
+//         function(err){
+//             res.status(500).send(err)
+//         }
+//     ) 
+// })
 app.post("/api/createform",async(req,res)=>{
     try {
         const {formname,values,date,time,url}=req.body;
